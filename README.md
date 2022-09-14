@@ -1,3 +1,3 @@
 # Slack Hyphen
 
-This is a slash command
+This is a slash command.
