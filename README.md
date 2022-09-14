@@ -1,1 +1,3 @@
-# replace this
+# Slack Hyphen
+
+This is a slash command
