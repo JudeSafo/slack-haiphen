@@ -6,7 +6,7 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   packageManager: javascript.NodePackageManager.PNPM,
   projenrcTs: true,
   gitignore: ['.env'],
-  deps: ['@slack/bolt', 'aws-lambda', 'dotenv'], /* Runtime dependencies of this module. */
+  deps: ['@slack/bolt', 'aws-lambda', 'dotenv', 'axios'], /* Runtime dependencies of this module. */
   devDeps: ['@types/aws-lambda', 'ts-node@^10.9.1', '@types/node'], /* Build dependencies for this module. */
 });
 
