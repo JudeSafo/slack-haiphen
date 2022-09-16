@@ -2,6 +2,7 @@ import axios from 'axios';
 import * as dotenv from 'dotenv';
 
 export interface OAuth {
+  code: string;
   clientId: string;
   secretId: string;
   redirectUri?: string;
@@ -15,13 +16,17 @@ export function setup() {
   dotenv.config();
 }
 
-export const getOauthAccessToken = async (code: string, param: OAuth, tokenUri: string) => {
-  const response = await axios.post<{access_token: string; scope: string}>(tokenUri,
+export const getOauthAccessToken = async (param: OAuth, tokenUri: string) => {
+  console.log(param);
+
+  const response = await axios.post(tokenUri,
     {
-      code,
+      code: param.code,
       client_id: param.clientId,
       client_secret: param.secretId,
-      redirect_uri: param.redirectUri,
+    },
+    {
+      headers: { 'Content-Type': 'multipart/form-data' },
     },
   );
   return response;
