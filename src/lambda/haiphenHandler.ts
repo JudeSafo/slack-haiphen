@@ -16,7 +16,7 @@ const app = new App({
   receiver: awsLambdaReceiver,
 });
 
-app.command('/hyphen', async ({ ack, respond }) => {
+app.command('/haiphen', async ({ ack, respond }) => {
   await ack();
 
   await respond(JSON.stringify({
@@ -61,7 +61,7 @@ app.command('/hyphen', async ({ ack, respond }) => {
 
 export const handler = async (event: APIGatewayProxyEvent, context: any, callback: any) => {
   try {
-    console.log('Call Hyphen Command');
+    console.log('Call Haiphen Command');
 
     const receiver = await awsLambdaReceiver.start();
     return await receiver(event, context, callback);

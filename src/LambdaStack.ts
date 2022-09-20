@@ -21,7 +21,7 @@ export class LambdaStack extends Stack {
       bundling: {
         minify: true,
       },
-      entry: `${lambdaFolder}/hyphenHandler.ts`,
+      entry: `${lambdaFolder}/haiphenHandler.ts`,
       timeout: Duration.minutes(1),
       environment: {
         SLACK_TOKEN,
@@ -29,7 +29,7 @@ export class LambdaStack extends Stack {
       },
     });
 
-    const api = new LambdaRestApi(this, 'HyphenRestApi', {
+    const api = new LambdaRestApi(this, 'HaiphenRestApi', {
       handler: slashHandler,
       proxy: false,
       deployOptions: {
@@ -39,8 +39,8 @@ export class LambdaStack extends Stack {
       },
     });
 
-    const endpoint = api.root.addResource('hyphen');
-    endpoint.addMethod('POST'); // POST /dev/hyphen
+    const endpoint = api.root.addResource('haiphen');
+    endpoint.addMethod('POST'); // POST /dev/haiphen
 
     const loginHandler = new NodejsFunction(this, 'LoginSlackBot', {
       bundling: {

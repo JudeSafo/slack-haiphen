@@ -2,7 +2,7 @@ import { awscdk, javascript } from 'projen';
 const project = new awscdk.AwsCdkTypeScriptApp({
   cdkVersion: '2.1.0',
   defaultReleaseBranch: 'main',
-  name: 'slack-hyphen',
+  name: 'slack-haiphen',
   packageManager: javascript.NodePackageManager.PNPM,
   projenrcTs: true,
   gitignore: ['.env'],
