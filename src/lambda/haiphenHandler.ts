@@ -1,5 +1,6 @@
 import { App, AwsLambdaReceiver, LogLevel } from '@slack/bolt';
 import { APIGatewayProxyEvent } from 'aws-lambda';
+import axios from 'axios';
 import { throwExpression } from '../utility';
 
 const signingSecret = process.env.SLACK_SIGNING_SECRET ?? throwExpression('Please provide SLACK_SIGNING_SECRET');
@@ -19,7 +20,9 @@ const app = new App({
 app.command('/haiphen', async ({ ack, respond }) => {
   await ack();
 
-  await respond(JSON.stringify({
+  // this can be replaced with
+  // const { data } = await axios.get('https://myapi.foo');
+  const data = JSON.stringify({
     data: [{
       aamath:
     0.43809595704078674,
@@ -56,7 +59,9 @@ app.command('/haiphen', async ({ ack, respond }) => {
       libvorbis:
     0.35669007897377014,
     }],
-  }));
+  });
+
+  await respond(data);
 });
 
 export const handler = async (event: APIGatewayProxyEvent, context: any, callback: any) => {
