@@ -21,47 +21,15 @@ app.command('/haiphen', async ({ ack, respond }) => {
   await ack();
 
   // this can be replaced with
-  // const { data } = await axios.get('https://myapi.foo');
-  const data = JSON.stringify({
-    data: [{
-      aamath:
-    0.43809595704078674,
+  const { data } = await axios.post('http://54.164.12.213:5000/api', {
+    src: 'aws-auth',
+  }, {
+    headers: {
+      'Content-Type': 'application/json',
     },
-    {
-      urdfdom_headers:
-    0.4018125534057617,
-    },
-    {
-      jpegoptim:
-    0.38550955057144165,
-    },
-    {
-      'dhall-json':
-    0.38463133573532104,
-    },
-    {
-      icecast:
-    0.38347381353378296,
-    },
-    {
-      diskonaut:
-    0.37484338879585266,
-    },
-    {
-      telnet:
-    0.3648534119129181,
-    },
-    {
-      dmd:
-    0.35837242007255554,
-    },
-    {
-      libvorbis:
-    0.35669007897377014,
-    }],
   });
 
-  await respond(data);
+  await respond(JSON.stringify(data));
 });
 
 export const handler = async (event: APIGatewayProxyEvent, context: any, callback: any) => {
